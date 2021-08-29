@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users list{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Users list</h1>
+</div>
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead>
+            <th>#</th>
+            <th>User</th>
+            <th>Action</th>    
+        </thead>
+        <tbody>
+        {% for user in users %}        
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              {% if user.email==app.user.username %}
+                <div class="radio">
+                     <label><input type="radio" checked></label>
+                </div> 
+             {% else %}
+                <div class="radio">
+                     <label><input type="radio" disabled></label>
+                </div> 
+            {% endif %}          
+            </td>
+        </tr>
+        {% else %}
+            <tr>
+                <td>Oooooops! No users found!</td>
+            </tr>
+        {% endfor %}    
+        </tbody>   
+    </table>
+</div>
+
+{% endblock %}

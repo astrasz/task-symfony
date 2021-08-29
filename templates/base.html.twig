@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    {% block stylesheets %}{% endblock %}
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light"
+      style="height: 70px;"
+    >
+      <a class="navbar-brand" href="/">Task-Symfony</a>
+      {% if app.user %}
+        <div class="text-info ">
+            <strong>You are logged in as {{ app.user.username }}</strong>
+        </div>
+        {# <div class="text-info ">            
+        <li><a class="nav-link" href="{{ path('home') }}">View Users</a></li>
+        </div> #}
+    {% endif %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+      <ul class="nav navbar-nav navbar-right">        
+        {% if app.user %}        
+        <li><a class="nav-link" href="{{ path('app_logout') }}">Logout</a></li>
+        {% else %}      
+        <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
+        {% endif %}
+        <li>
+          <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+        </li>
+      </ul>
+    </nav>
+    {% block body %}{% endblock %} {% block javascripts %}{% endblock %}
+  </body>
 </html>
