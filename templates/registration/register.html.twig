@@ -3,15 +3,17 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1 class="h3 mb-3 font-weight-normal mx-5">Register</h1>
 
-    {{ form_start(registrationForm) }}
+    {{ form_start(registrationForm, {
+        "attr": {
+                "class": "mx-5 my-3"
+            },
+    }) }}
         {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {# {{ form_row(registrationForm.agreeTerms) }} #}
 
-        <button type="submit" class="btn">Register</button>
+        <button class="btn btn-lg btn-primary my-2" type="submit">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

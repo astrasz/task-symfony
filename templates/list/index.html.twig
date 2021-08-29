@@ -12,6 +12,10 @@
     <h1>Users list</h1>
 </div>
 <div class="container">
+<div>
+    <p>Users number: 
+    {{ users.getTotalItemCount }}</p>
+</div>
     <table class="table table-striped table-hover">
         <thead>
             <th>#</th>
@@ -42,6 +46,9 @@
         {% endfor %}    
         </tbody>   
     </table>
+    <div class="navigation">
+    {{ knp_pagination_render(users) }}
+    </div>
 </div>
 
 {% endblock %}
