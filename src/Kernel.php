@@ -12,12 +12,6 @@ class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
-    // public function registerBundles()
-    // {
-    //     return new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle();
-          
-    // }
-
     protected function configureContainer(ContainerConfigurator $container): void
     {
         $container->import('../config/{packages}/*.yaml');
